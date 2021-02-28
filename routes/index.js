@@ -1,39 +1,38 @@
 let express = require('express');
 let router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home' });
-});
+let indexController = require('../controllers/index');
 
-router.get('/home', function(req, res, next) {
-  res.render('index', { title: 'Home' });
-});
+/* GET home page. */
+router.get('/', indexController.displayHomePage);
 
 /* GET about page. */
-router.get('/about', function(req, res, next) {
-  res.render('index', { title: 'About' });
-});
-
-router.get('/info', function(req, res, next) {
-  res.render('index', { title: 'About' });
-});
-
+router.get('/about', indexController.displayAboutPage);
 
 /* GET contact page. */
-router.get('/contact', function(req, res, next) {
-  res.render('index', { title: 'Contact' });
-});
+router.get('/contact', indexController.displayContactPage);
 
 /* GET services page. */
-router.get('/services', function(req, res, next) {
-  res.render('index', { title: 'Services' });
-});
+router.get('/services', indexController.displayServicesPage);
 
 /* GET products page. */
-router.get('/products', function(req, res, next) {
-  res.render('index', { title: 'Products' });
-});
+router.get('/products', indexController.displayProductsPage);
+
+/* Get the route for displaying the Login page */
+router.get('/login', indexController.displayLoginPage);
+
+/* POST the route for processing the Login page */
+router.post('/login', indexController.processLoginPage);
+
+/* Get the route for displaying the Register page */
+router.get('/register', indexController.displayRegisterPage);
+
+/* POST the route for processing the Register page */
+router.post('/register', indexController.processRegisterPage);
+
+/* Get to perform Logout */
+router.get('/logout', indexController.performLogout);
+
 
 
 module.exports = router;
